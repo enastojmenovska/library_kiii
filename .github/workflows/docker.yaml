@@ -15,8 +15,8 @@ jobs:
       matrix:
         include:
           - name: backend
-            context: app
-            dockerfile: app/Dockerfile
+            context: api
+            dockerfile: api/Dockerfile
             image_name: library-app
             build_args: |
               DB_HOST=db
