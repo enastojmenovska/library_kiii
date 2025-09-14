@@ -2,7 +2,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Pass API base at build time if you want (optional)
-ARG VITE_API_BASE=http://localhost:8000
+ARG VITE_API_BASE
 ENV VITE_API_BASE=$VITE_API_BASE
 
 COPY package.json package-lock.json* ./
