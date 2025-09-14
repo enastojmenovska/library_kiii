@@ -8,13 +8,16 @@ from .routers import books as books_router
 app = FastAPI(title="Library API", version="0.1.0")
 
 # allow your dev frontend origins
-origins = ["*"]
-
+origins = [
+    "http://library.local:8081",
+    "http://localhost:8081",
+    "http://localhost:5173"
+]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins, 
     allow_credentials=False,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
