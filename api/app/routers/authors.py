@@ -4,7 +4,7 @@ from ..deps import get_db
 from ..models import Author
 from ..schemas import AuthorCreate, AuthorUpdate, AuthorOut
 
-router = APIRouter(prefix="/authors", tags=["authors"])
+router = APIRouter(prefix="/api/authors", tags=["authors"])
 
 @router.post("", response_model=AuthorOut, status_code=status.HTTP_201_CREATED)
 def create_author(payload: AuthorCreate, db: Session = Depends(get_db)):

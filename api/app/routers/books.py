@@ -4,7 +4,7 @@ from ..deps import get_db
 from ..models import Book, Author, Genre
 from ..schemas import BookCreate, BookUpdate, BookOut
 
-router = APIRouter(prefix="/books", tags=["books"])
+router = APIRouter(prefix="/api/books", tags=["books"])
 
 @router.post("", response_model=BookOut, status_code=status.HTTP_201_CREATED)
 def create_book(payload: BookCreate, db: Session = Depends(get_db)):

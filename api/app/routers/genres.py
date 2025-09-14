@@ -4,7 +4,7 @@ from ..deps import get_db
 from ..models import Genre
 from ..schemas import GenreCreate, GenreUpdate, GenreOut
 
-router = APIRouter(prefix="/genres", tags=["genres"])
+router = APIRouter(prefix="/api/genres", tags=["genres"])
 
 @router.post("", response_model=GenreOut, status_code=status.HTTP_201_CREATED)
 def create_genre(payload: GenreCreate, db: Session = Depends(get_db)):
