@@ -31,7 +31,7 @@ jobs:
             dockerfile: web/Dockerfile
             image_name: library-web
             build_args: |
-              VITE_API_BASE=http://library.local/api
+              VITE_API_BASE=http://library.local/api:8081
 
     steps:
       - uses: actions/checkout@v4
