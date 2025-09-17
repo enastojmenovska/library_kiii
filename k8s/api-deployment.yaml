@@ -24,7 +24,6 @@ spec:
                 name: api-config
             - secretRef:
                 name: api-secret
-          # Optionally add readiness probe
           readinessProbe:
             httpGet:
               path: /docs
