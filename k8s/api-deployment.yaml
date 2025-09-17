@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library-app
+  namespace: library
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: library-app
+  template:
+    metadata:
+      labels:
+        app: library-app
+    spec:
+      containers:
+        - name: library-app
+          image: enastojmenovska/library-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: api-config
+            - secretRef:
+                name: api-secret
+          # Optionally add readiness probe
+          readinessProbe:
+            httpGet:
+              path: /docs
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10

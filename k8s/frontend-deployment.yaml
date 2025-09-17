@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library-web
+  namespace: library
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: library-web
+  template:
+    metadata:
+      labels:
+        app: library-web
+    spec:
+      containers:
+        - name: library-web
+          image: enastojmenovska/library-web:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
